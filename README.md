@@ -39,17 +39,13 @@ Execute o comando de build para instalar as dependências, compilar o React e su
 ```bash
 make build-project
 ```
-
-#### 4. Crie um super usuário (Admin):
-Para acessar o sistema pela primeira vez, você precisa criar um super usuário.
+Para acessar o sistema, use o login abaixo.
 ```bash
-make container-terminal
-# Dentro do container:
-python manage.py createsuperuser
+Usuário: admin
+Senha: 1234
 ```
 
 ## 🛠️ Comandos de Manutenção
-O projeto utiliza um [Makefile](https://github.com/gabriel-pagani/dashly/blob/main/Makefile) para simplificar as operações diárias.
 
 ## ⭐ Comandos Úteis
 Gerar senhas fortes.
