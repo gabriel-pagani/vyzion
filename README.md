@@ -10,7 +10,7 @@ git clone https://github.com/gabriel-pagani/dashly.git && cd dashly/
 #### 2. Configure as variáveis de ambiente:
 Crie um arquivo .env na raiz do projeto (baseado no [.env.example](https://github.com/gabriel-pagani/dashly/blob/main/.env.example)) e configure as credenciais do banco e do Django.
 ```bash
-cp --update=none .env.example .env
+cp --update=none ./_deploy/.env.example ./_deploy/.env
 ```
 ```bash
 # Conteúdo do .env após a cópia
