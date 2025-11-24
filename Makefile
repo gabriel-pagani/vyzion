@@ -1,24 +1,24 @@
 build-project:
 	cd frontend/ && npm install && npm run build && \
-	cd ../deploy/ && \
+	cd ../_deploy/ && \
 	docker compose up -d --build
 
 clean-project:
-	cd deploy/ && \
+	cd _deploy/ && \
 	docker compose down && \
 	docker system prune -a --volumes --force && \
     cd .. && rm -rf backend/build/ backend/static/ database/ frontend/node_modules/
 
 start-system:
-	cd deploy/ && \
+	cd _deploy/ && \
 	docker compose up -d
 
 stop-system:
-	cd deploy/ && \
+	cd _deploy/ && \
 	docker compose down
 
 restart-system:
-	cd deploy/ && \
+	cd _deploy/ && \
 	docker compose down && \
 	docker compose up -d
 
@@ -30,9 +30,9 @@ list-containers:
 
 container ?= app
 container-terminal:
-	cd deploy/ && \
+	cd _deploy/ && \
 	docker compose exec $(container) sh
 
 container-logs:
-	cd deploy/ && \
+	cd _deploy/ && \
 	docker compose logs -f $(container)
