@@ -76,6 +76,20 @@ services:
     networks:
       - network
 
+  certbot-renew:
+    image: certbot/certbot
+    container_name: certbot-renew
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      certbot:
+        condition: service_completed_successfully
+    entrypoint: sh -c "while true; do certbot renew --webroot -w /var/www/certbot; sleep 12h; done"
+    networks:
+      - network
+    restart: unless-stopped
+
 volumes:
   static_volume:
 
