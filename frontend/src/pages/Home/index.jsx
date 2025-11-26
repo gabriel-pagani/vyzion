@@ -89,7 +89,7 @@ function Home() {
         />
       ) : (
         <div id="dashboard-placeholder">
-          <h1>Bem-vindo ao Vyzio!</h1>
+          <h1>Bem-vindo a Vyzio!</h1>
           <p>Selecione algum dashboard no menu lateral para visualizá-lo</p>
         </div>
       )}

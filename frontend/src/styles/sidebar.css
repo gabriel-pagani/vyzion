@@ -30,17 +30,17 @@
 }
 
 .logo img {
-  width: 40px;
+  width: 60px;
   height: auto;
   transition: width 0.3s ease;
 }
 
 #sidebar:not(.collapsed) .logo img {
-  width: 125px;
+  width: 197px;
 }
 
 #sidebar.collapsed .logo img {
-  width: 30px;
+  width: 45px;
 }
 
 .menu {
