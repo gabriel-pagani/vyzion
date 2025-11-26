@@ -212,4 +212,4 @@ __marimo__/
 
 # Sensitive data
 database/
-certs/
+certbot/
