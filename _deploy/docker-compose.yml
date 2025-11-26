@@ -66,16 +66,15 @@ services:
       - network
     restart: unless-stopped
 
-  # certbot:
-  #   image: certbot/certbot
-  #   container_name: certbot
-  #   volumes:
-  #     - ./certbot/conf:/etc/letsencrypt
-  #     - ./certbot/www:/var/www/certbot
-  #   command: "certonly --webroot -w /var/www/certbot --force-renewal --email $DEFAULT_EMAIL -d $DOMAIN --agree-tos --no-eff-email"
-  #   networks:
-  #     - network
-  #   restart: unless-stopped
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: "certonly --non-interactive --webroot -w /var/www/certbot --email $DEFAULT_EMAIL -d $DOMAIN --agree-tos --no-eff-email"
+    networks:
+      - network
 
 volumes:
   static_volume:
