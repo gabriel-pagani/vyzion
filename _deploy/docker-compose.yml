@@ -62,6 +62,11 @@ services:
     depends_on:
       app:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "nc -z localhost 80"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     networks:
       - network
     restart: unless-stopped
@@ -74,7 +79,8 @@ services:
   #     - ./certbot/conf:/etc/letsencrypt
   #     - ./certbot/www:/var/www/certbot
   #   depends_on:
-  #     - nginx
+  #     nginx:
+  #       condition: service_healthy
   #   command: "certonly --non-interactive --webroot -w /var/www/certbot --email $DEFAULT_EMAIL -d $DOMAIN --agree-tos --no-eff-email"
   #   networks:
   #     - network
