@@ -41,13 +41,42 @@ Execute o comando de build para instalar as dependências, compilar o React e su
 ```bash
 make build-system
 ```
+
+#### 4. Configure o SSL:
+Após o build, pare o sistema para fazer a devidas alterações.
+```
+make stop-system
+```
+Edite as seguintes linhas do arquivo https.conf com o domínio do seu servidor.
+```
+server_name ______DOMAIN______;
+
+ssl_certificate /etc/letsencrypt/live/______DOMAIN______/fullchain.pem;
+ssl_certificate_key /etc/letsencrypt/live/______DOMAIN______/privkey.pem;
+```
+Altere também as seguintes linhas do arquivo docker-compose.yml para finalizar.
+```
+nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+        - "80:80"
+        - "443:443"
+    volumes:
+        - static_volume:/app/static
+        - ./https.conf:/etc/nginx/conf.d/default.conf
+        - ./certbot/conf:/etc/letsencrypt
+        - ./certbot/www:/var/www/certbot
+```
+Após todas as alterações inicie o sistema novamente.
+```
+make start-system
+```
 Para acessar o sistema, use o login abaixo.
 ```bash
 Usuário: admin
 Senha: 1234
 ```
-
-## 🛠️ Comandos de Manutenção
 
 ## ⭐ Comandos Úteis
 Gerar senhas fortes.
