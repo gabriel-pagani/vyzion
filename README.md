@@ -39,7 +39,7 @@ METABASE_SECRET_KEY=""
 #### 3. Build e Start inicial:
 Execute o comando de build para instalar as dependências, compilar o React e subir os containers.
 ```bash
-make build-project
+make build-system
 ```
 Para acessar o sistema, use o login abaixo.
 ```bash
