@@ -23,6 +23,8 @@ POSTGRES_USER="CHANGE-ME"
 POSTGRES_PASSWORD="CHANGE-ME"
 POSTGRES_HOST="database"
 POSTGRES_PORT="5432"
+DEFAULT_EMAIL="email@example.com"
+DOMAIN="domain.com"
 ```
 Crie também o arquivo local_settings.py na pasta project do backend e configure as credenciais do Metabase e do LDAP.
 ```bash
