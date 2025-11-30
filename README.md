@@ -26,7 +26,7 @@ POSTGRES_PORT="5432"
 DEFAULT_EMAIL="email@example.com"
 DOMAIN="domain.com"
 ```
-Crie também o arquivo local_settings.py na pasta project do [backend](https://github.com/gabriel-pagani/vyzion/tree/main/backend) e configure as credenciais do Metabase e do LDAP.
+Crie também o arquivo local_settings.py na pasta [project](https://github.com/gabriel-pagani/vyzion/tree/main/backend/project) e configure as credenciais do Metabase e do LDAP.
 ```bash
 touch backend/project/local_settings.py
 ```
