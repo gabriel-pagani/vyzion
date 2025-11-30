@@ -71,33 +71,32 @@ services:
       - network
     restart: unless-stopped
 
-  # # Uncomment this block to enable SSL
-  # certbot:
-  #   image: certbot/certbot
-  #   container_name: certbot
-  #   volumes:
-  #     - ./certbot/conf:/etc/letsencrypt
-  #     - ./certbot/www:/var/www/certbot
-  #   depends_on:
-  #     nginx:
-  #       condition: service_healthy
-  #   command: "certonly --non-interactive --webroot -w /var/www/certbot --email $DEFAULT_EMAIL -d $DOMAIN --agree-tos --no-eff-email"
-  #   networks:
-  #     - network
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      nginx:
+        condition: service_healthy
+    command: "certonly --non-interactive --webroot -w /var/www/certbot --email $DEFAULT_EMAIL -d $DOMAIN --agree-tos --no-eff-email"
+    networks:
+      - network
 
-  # certbot-renew:
-  #   image: certbot/certbot
-  #   container_name: certbot-renew
-  #   volumes:
-  #     - ./certbot/conf:/etc/letsencrypt
-  #     - ./certbot/www:/var/www/certbot
-  #   depends_on:
-  #     certbot:
-  #       condition: service_completed_successfully
-  #   entrypoint: sh -c "while true; do certbot renew --webroot -w /var/www/certbot; sleep 12h; done"
-  #   networks:
-  #     - network
-  #   restart: unless-stopped
+  certbot-renew:
+    image: certbot/certbot
+    container_name: certbot-renew
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      certbot:
+        condition: service_completed_successfully
+    entrypoint: sh -c "while true; do certbot renew --webroot -w /var/www/certbot; sleep 12h; done"
+    networks:
+      - network
+    restart: unless-stopped
 
 volumes:
   static_volume:
