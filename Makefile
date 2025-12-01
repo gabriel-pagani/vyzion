@@ -32,11 +32,10 @@ list-volumes:
 list-containers:
 	docker ps -a
 
-container ?= app
 container-terminal:
 	cd _deploy/ && \
 	docker compose exec $(container) sh
 
-container-logs:
+containers-logs:
 	cd _deploy/ && \
 	docker compose logs -f $(container)
