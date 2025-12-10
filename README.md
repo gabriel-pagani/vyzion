@@ -1,5 +1,5 @@
 # Vyzion
-Sistema de gerenciamento de dashboards integrado com Power BI e Metabase
+Portal de centralização e permissionamento de dashboards do Power BI e Metabase
 
 ## 🚀 Instalação e Configuração Inicial
 
