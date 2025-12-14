@@ -1,8 +1,7 @@
 build-system:
 	cd frontend/ && npm install && npm run build && \
 	cd ../_deploy/ && \
-	docker compose up -d --build && \
-	docker compose exec app python manage.py shell -c "from app.models import Users; Users.objects.filter(username='admin').exists() or Users.objects.create_superuser(username='admin', password='1234')"
+	docker compose up -d --build
 
 clean-system:
 	cd _deploy/ && \
@@ -23,14 +22,10 @@ restart-system:
 	docker compose down && \
 	docker compose up -d
 
-list-images:
-	docker images
-
-list-volumes:
-	docker volume ls
-
-list-containers:
-	docker ps -a
+create-superuser:
+	cd _deploy/ && \
+	docker compose up -d && \
+	docker compose exec app python manage.py shell -c "from app.models import Users; Users.objects.filter(username='admin').exists() or Users.objects.create_superuser(username='admin', password='1234')"
 
 container-terminal:
 	cd _deploy/ && \
@@ -39,3 +34,12 @@ container-terminal:
 containers-logs:
 	cd _deploy/ && \
 	docker compose logs -f $(container)
+
+list-images:
+	docker images
+
+list-volumes:
+	docker volume ls
+
+list-containers:
+	docker ps -a
