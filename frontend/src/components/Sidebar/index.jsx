@@ -333,7 +333,7 @@ const hasFuzzyMatch = (text, normalizedTerm) => {
         <ul className="menu-list">
           {Object.keys(filteredSectors).length === 0 ? (
             <li className="alert">
-              <p>Nenhum dashboard foi encontrado!</p>
+              <p>Nenhum dashboard disponível!</p>
             </li>
           ) : (
             Object.entries(filteredSectors).map(([sectorName, dashboards]) => {
