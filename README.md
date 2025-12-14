@@ -72,8 +72,11 @@ Após todas as alterações inicie o sistema novamente.
 ```
 make start-system
 ```
-Para acessar o sistema, use o login abaixo.
+Para acessar o sistema, crie um super usuário.
 ```bash
+make create-superuser
+
+# Login padrão
 Usuário: admin
 Senha: 1234
 ```
