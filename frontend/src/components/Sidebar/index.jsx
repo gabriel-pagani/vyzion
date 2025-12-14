@@ -64,6 +64,9 @@ function Sidebar({ onSelectDashboard, currentUser }) {
   // Guarda o estado dos submenus antes da pesquisa
   const [preSearchActiveSubmenus, setPreSearchActiveSubmenus] = useState(null);
 
+  // Verifica se há dashboards disponíveis
+  const hasDashboards = Object.keys(sectors).length > 0;
+
   const handleLogout = (e) => {
     e.preventDefault();
     
@@ -305,6 +308,7 @@ const hasFuzzyMatch = (text, normalizedTerm) => {
       </div>
 
       <nav className="menu">
+        {hasDashboards && (
         <div className="search-indicadores-container">
           <input
             type="text"
@@ -313,7 +317,6 @@ const hasFuzzyMatch = (text, normalizedTerm) => {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />
-          {/* O botão de limpar só aparece se houver texto */}
           {searchTerm && (
             <button
               className="clear-search"
@@ -325,6 +328,7 @@ const hasFuzzyMatch = (text, normalizedTerm) => {
             </button>
           )}
         </div>
+        )}
 
         <ul className="menu-list">
           {Object.keys(filteredSectors).length === 0 ? (
