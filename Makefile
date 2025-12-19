@@ -28,7 +28,6 @@ restart-system:
 
 create-superuser:
 	@cd _deploy/ && \
-	docker compose up -d && \
 	docker compose exec app python manage.py shell -c "from app.models import Users; Users.objects.filter(username='admin').exists() or Users.objects.create_superuser(username='admin', password='1234')"
 
 container-terminal:
