@@ -5,7 +5,7 @@ from .models import Users, Dashboards
 class UsersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Users
-        fields = '__all__'
+        exclude = ['password',]
         read_only_fields = ['id']
 
 
