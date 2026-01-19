@@ -23,8 +23,7 @@ stop-system:
 
 restart-system:
 	@cd _deploy/ && \
-	docker compose down && \
-	docker compose up -d
+	docker compose restart
 
 create-superuser:
 	@cd _deploy/ && \
